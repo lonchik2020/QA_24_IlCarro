@@ -23,8 +23,9 @@ public class HelperBase {
     }
 
     public void click(By locator){
-        WebElement element = driver.findElement(locator);
-        element.click();
+//        WebElement element = driver.findElement(locator);
+//        element.click();
+        driver.findElement(locator).click();
 
     }
 
@@ -39,6 +40,14 @@ public class HelperBase {
     public boolean isElementPresent(By locator){
         List<WebElement>list = driver.findElements(locator);
         return !findElementsBase(locator).isEmpty();
+    }
+
+    public void pause(int time){
+        try {
+            Thread.sleep(time);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }

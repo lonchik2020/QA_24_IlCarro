@@ -9,13 +9,13 @@ public class HelperUser extends HelperBase {
         super(driver);
     }
 
-    public void openLoginRegistrationForm() {
-        click(By.xpath("//a[text()='Log in']"));
+    public void openLoginForm() {
+        click(By.xpath("//a[text()=' Log in ']"));
 //        WebElement loginBtn = driver.findElement(By.xpath("//a[text()='Log in']"));
 //        loginBtn.click();
     }
 
-    public void fillLoginRegistrationForm(String email, String password) {
+    public void fillLoginForm(String email, String password) {
         type(By.id("email"), email);
         type(By.id("password"), password);
     }
@@ -37,4 +37,11 @@ public class HelperUser extends HelperBase {
     }
 
 
+    public String getMessage() {
+//        WebElement element = driver.findElement(By.cssSelector(".dialog-container>h2"));
+//        String text = element.getText();
+//        return text;
+        //pause(2000);
+        return driver.findElement(By.cssSelector(".dialog-container>h2")).getText();
+    }
 }

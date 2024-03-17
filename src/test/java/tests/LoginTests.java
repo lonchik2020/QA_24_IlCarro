@@ -18,9 +18,10 @@ public class LoginTests extends TestBase{
 
     @Test
     public void loginPositiveTest(){
-        app.getHelperUser().openLoginRegistrationForm();
-        app.getHelperUser().fillLoginRegistrationForm("lonchik_7_7@walla.co.il","Samimi@44@");
+        app.getHelperUser().openLoginForm();
+        app.getHelperUser().fillLoginForm("lonchik_7_7@walla.co.il","Samimi@44@");
         app.getHelperUser().submitLogin();
+        Assert.assertEquals(app.getHelperUser().getMessage(), "Logged in success");
         app.getHelperUser().clickBtnOk();
 
     }
