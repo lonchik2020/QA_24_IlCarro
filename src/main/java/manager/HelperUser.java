@@ -1,5 +1,6 @@
 package manager;
 
+import models.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,6 +21,11 @@ public class HelperUser extends HelperBase {
         type(By.id("password"), password);
     }
 
+    public void fillLoginForm(User user) {
+        type(By.id("email"), user.getEmail());
+        type(By.id("password"), user.getPassword());
+    }
+
     public void submitLogin() {
         click(By.xpath("//button[@type='submit']"));
     }
@@ -34,6 +40,7 @@ public class HelperUser extends HelperBase {
 
     public void logout() {
         click(By.xpath("//a[@href='/logout?url=%2Fsearch']"));
+        //click(By.xpath("//*[.=' Logout ']"));
     }
 
 
@@ -43,5 +50,13 @@ public class HelperUser extends HelperBase {
 //        return text;
         //pause(2000);
         return driver.findElement(By.cssSelector(".dialog-container>h2")).getText();
+    }
+
+    public boolean isMessageForWrongEmailAppears() {
+        return isElementPresent(By.xpath("//div[@class='error']"));
+    }
+
+    public boolean isMessageLoginFailedAppears() {
+        return isElementPresent(By.xpath("//h2[@class='message']"));
     }
 }

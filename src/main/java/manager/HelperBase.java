@@ -38,8 +38,10 @@ public class HelperBase {
     }
 
     public boolean isElementPresent(By locator){
-        List<WebElement>list = driver.findElements(locator);
-        return !findElementsBase(locator).isEmpty();
+//        List<WebElement>list = driver.findElements(locator);
+//        return list.size()>0;
+
+        return !driver.findElements(locator).isEmpty();
     }
 
     public void pause(int time){
