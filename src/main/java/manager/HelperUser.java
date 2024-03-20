@@ -31,7 +31,8 @@ public class HelperUser extends HelperBase {
     }
 
     public void clickBtnOk(){
-        click(By.xpath("//button[@type='button']"));
+        if(isElementPresent(By.xpath("//button[@type='button']")))
+            click(By.xpath("//button[@type='button']"));
     }
 
     public boolean isLogged() {
@@ -52,11 +53,9 @@ public class HelperUser extends HelperBase {
         return driver.findElement(By.cssSelector(".dialog-container>h2")).getText();
     }
 
-    public boolean isMessageForWrongEmailAppears() {
-        return isElementPresent(By.xpath("//div[@class='error']"));
-    }
 
-    public boolean isMessageLoginFailedAppears() {
-        return isElementPresent(By.xpath("//h2[@class='message']"));
+
+    public String getErrorText() {
+        return driver.findElement(By.cssSelector("div.error")).getText();
     }
 }

@@ -58,7 +58,8 @@ public class LoginTests extends TestBase{
         app.getHelperUser().openLoginForm();
         app.getHelperUser().fillLoginForm("lonchik_7_7walla.co.il","Samimi@44@");
         app.getHelperUser().submitLogin();
-        Assert.assertTrue(app.getHelperUser().isMessageForWrongEmailAppears());
+        Assert.assertEquals(app.getHelperUser().getErrorText(), "It'snot look like email");
+        Assert.assertTrue(app.getHelperUser().isYallaButtonNotActive());
 
     }
 
@@ -69,7 +70,7 @@ public class LoginTests extends TestBase{
         app.getHelperUser().fillLoginForm("lonchik_7_7@walla.co.il","Samimi@44");
         app.getHelperUser().submitLogin();
         app.getHelperUser().pause(5);
-        Assert.assertTrue(app.getHelperUser().isMessageLoginFailedAppears());
+        Assert.assertEquals(app.getHelperUser().getMessage(), "\"Login or Password incorrect\"");
 
     }
 
@@ -79,14 +80,12 @@ public class LoginTests extends TestBase{
         app.getHelperUser().openLoginForm();
         app.getHelperUser().fillLoginForm("dananana22@walla.co.il","Samimi@44");
         app.getHelperUser().submitLogin();
-        Assert.assertTrue(app.getHelperUser().isMessageLoginFailedAppears());
+        Assert.assertEquals(app.getHelperUser().getMessage(), "\"Login or Password incorrect\"");
 
     }
 
     @AfterMethod
-    public void postCondition()
-    {
-        if(app.getHelperUser().isMessageLoginFailedAppears())
+    public void postCondition() {
             app.getHelperUser().clickBtnOk();
        }
 
