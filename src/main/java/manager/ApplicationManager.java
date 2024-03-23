@@ -14,7 +14,7 @@ public class ApplicationManager {
     public void init(){
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.navigate().to("https://ilcarro.web.app/search");
         helperUser = new HelperUser(driver);
     }
