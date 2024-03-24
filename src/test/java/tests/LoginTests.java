@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 public class LoginTests extends TestBase{
 
     @BeforeMethod
-    public void precondition() {
+    public void preCondition() {
         //if signOut presents ----> logout
         if (app.getHelperUser().isLogged()) {
             app.getHelperUser().logout();
