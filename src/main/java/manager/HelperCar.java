@@ -11,7 +11,7 @@ public class HelperCar extends HelperBase{
     }
 
     public void openCarForm() {
-        pause(500);
+        pause(5);
         click(By.xpath("//*[text()=' Let the car work ']"));
     }
 
@@ -43,5 +43,13 @@ public class HelperCar extends HelperBase{
     private void typeLocation(String location) {
         type(By.id("pickUpPlace"),location);
         click(By.cssSelector("div.pac-item"));
+    }
+
+    public void returnToHome() {
+        click(By.xpath("//button[text()='Search cars']"));
+    }
+
+    public void attachPhoto(String link) {
+        driver.findElement(By.cssSelector("#photos")).sendKeys(link);
     }
 }

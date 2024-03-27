@@ -43,15 +43,6 @@ public class HelperUser extends HelperBase {
     }
 
 
-    public String getMessage() {
-//        WebElement element = driver.findElement(By.cssSelector(".dialog-container>h2"));
-//        String text = element.getText();
-//        return text;
-        //pause(3000);
-        return driver.findElement(By.cssSelector(".dialog-container>h2")).getText();
-    }
-
-
 
     public String getErrorText() {
         return driver.findElement(By.cssSelector("div.error")).getText();
@@ -73,22 +64,24 @@ public class HelperUser extends HelperBase {
     public void checkPolicy() {
         //click(By.id("terms-of-use"));
         //click(By.cssSelector("label[for='terms-of-use']"));
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("document.querySelector('#terms-of-use').click()");
-
+        if(!driver.findElement(By.id("terms-of-use")).isSelected()) {
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("document.querySelector('#terms-of-use').click()");
+        }
     }
 
     public void checkPolicyXY(){
 //        Dimension size = driver.manage().window().getSize();
 //        System.out.println("Width screen--->" + size.getWidth());
 
-        WebElement label = driver.findElement(By.cssSelector("label[for='terms-of-use']"));
-        Rectangle rect = label.getRect();
-        int w = rect.getWidth();
-        Actions actions = new Actions(driver);
-        int xOffSet = -w/2;
-
-        actions.moveToElement(label,xOffSet,0).click().release().perform();
+        if(!driver.findElement(By.id("terms-of-use")).isSelected()) {
+            WebElement label = driver.findElement(By.cssSelector("label[for='terms-of-use']"));
+            Rectangle rect = label.getRect();
+            int w = rect.getWidth();
+            Actions actions = new Actions(driver);
+            int xOffSet = -w / 2;
+            actions.moveToElement(label, xOffSet, 0).click().release().perform();
+        }
 
     }
 

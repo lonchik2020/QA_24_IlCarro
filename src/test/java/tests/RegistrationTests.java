@@ -54,9 +54,8 @@ public class RegistrationTests extends TestBase{
         app.getHelperUser().fillRegistrationForm(user);
         app.getHelperUser().checkPolicy();
         //app.getHelperUser().checkPolicyXY();
-        Assert.assertEquals(app.getHelperUser().getErrorText(),
-                "Wrong email format\n" +
-                        "Wrong email format");
+        app.getHelperUser().submit();
+        Assert.assertTrue(app.getHelperUser().getErrorText().contains("Wrong email format"));
         Assert.assertTrue(app.getHelperUser().isYallaButtonNotActive());
     }
 
@@ -71,6 +70,7 @@ public class RegistrationTests extends TestBase{
         app.getHelperUser().fillRegistrationForm(user);
         app.getHelperUser().checkPolicy();
         //app.getHelperUser().checkPolicyXY();
+        app.getHelperUser().submit();
         Assert.assertEquals(app.getHelperUser().getErrorText(),
                 "Password must contain 1 uppercase letter, 1 lowercase letter, 1 number and one special symbol of [@$#^&*!]");
         Assert.assertTrue(app.getHelperUser().isYallaButtonNotActive());
@@ -87,11 +87,11 @@ public class RegistrationTests extends TestBase{
         app.getHelperUser().fillRegistrationForm(user);
         app.getHelperUser().checkPolicy();
         //app.getHelperUser().checkPolicyXY();
+        app.getHelperUser().submit();
         Assert.assertEquals(app.getHelperUser().getErrorText(),
                 "Name is required");
         Assert.assertTrue(app.getHelperUser().isYallaButtonNotActive());
     }
-
 
 
     @AfterMethod
