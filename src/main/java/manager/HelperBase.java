@@ -44,9 +44,9 @@ public class HelperBase {
         return !driver.findElements(locator).isEmpty();
     }
 
-    public void pause(int time){
+    public void pause(int sec){
         try {
-            Thread.sleep(time);
+            Thread.sleep(1000L *sec);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

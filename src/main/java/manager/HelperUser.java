@@ -47,7 +47,7 @@ public class HelperUser extends HelperBase {
 //        WebElement element = driver.findElement(By.cssSelector(".dialog-container>h2"));
 //        String text = element.getText();
 //        return text;
-        //pause(2000);
+        //pause(3000);
         return driver.findElement(By.cssSelector(".dialog-container>h2")).getText();
     }
 
@@ -98,4 +98,5 @@ public class HelperUser extends HelperBase {
         submit();
         clickBtnOk();
     }
+
 }
