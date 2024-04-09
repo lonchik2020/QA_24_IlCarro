@@ -13,6 +13,7 @@ public class LoginTests extends TestBase{
         //if signOut presents ----> logout
         if (app.getHelperUser().isLogged()) {
             app.getHelperUser().logout();
+            logger.info("Before method finish logout");
         }
     }
 
@@ -34,53 +35,65 @@ public class LoginTests extends TestBase{
 
     @Test
     public void loginPositiveTest(){
+        logger.info("Start test with name 'loginPositiveTest' ");
+        logger.info("Test data--->email:lonchik_7_7@walla.co.il , password:Samimi@44@ ");
         app.getHelperUser().openLoginForm();
         app.getHelperUser().fillLoginForm("lonchik_7_7@walla.co.il","Samimi@44@");
         app.getHelperUser().submit();
         //Assert if element with text "Logged in success" is present
         Assert.assertEquals(app.getHelperUser().getMessage(), "Logged in success");
         //app.getHelperUser().clickBtnOk();
+        logger.info("Assert check that message 'Logged in success' appears");
 
     }
 
     @Test
     public void loginPositiveTestModel(){
+        logger.info("Test data--->email:lonchik_7_7@walla.co.il , password:Samimi@44@ ");
         app.getHelperUser().openLoginForm();
         app.getHelperUser().fillLoginForm("lonchik_7_7@walla.co.il","Samimi@44@");
         app.getHelperUser().submit();
         Assert.assertEquals(app.getHelperUser().getMessage(), "Logged in success");
         //app.getHelperUser().clickBtnOk();
+        logger.info("Assert check that message 'Logged in success' appears");
 
     }
 
     @Test
     public void loginWrongEmail(){
+        logger.info("Test data--->email:lonchik_7_7walla.co.il , password:Samimi@44@ ");
         app.getHelperUser().openLoginForm();
         app.getHelperUser().fillLoginForm("lonchik_7_7walla.co.il","Samimi@44@");
         app.getHelperUser().submit();
         Assert.assertEquals(app.getHelperUser().getErrorText(), "It'snot look like email");
+        logger.info("Assert check that error message 'It'snot look like email' appears");
         Assert.assertTrue(app.getHelperUser().isYallaButtonNotActive());
+        logger.info("Assert check that 'Yalla' button is not active");
 
     }
 
 
     @Test
     public void loginWrongPassword(){
+        logger.info("Test data--->email:lonchik_7_7@walla.co.il , password:Samimi@44 ");
         app.getHelperUser().openLoginForm();
         app.getHelperUser().fillLoginForm("lonchik_7_7@walla.co.il","Samimi@44");
         app.getHelperUser().submit();
         app.getHelperUser().pause(5);
         Assert.assertEquals(app.getHelperUser().getMessage(), "\"Login or Password incorrect\"");
+        logger.info("Assert check that message '\"Login or Password incorrect\"' appears");
 
     }
 
 
     @Test
     public void loginUnregisteredUser(){
+        logger.info("Test data--->email:dananana22@walla.co.il , password:Samimi@44 ");
         app.getHelperUser().openLoginForm();
         app.getHelperUser().fillLoginForm("dananana22@walla.co.il","Samimi@44");
         app.getHelperUser().submit();
         Assert.assertEquals(app.getHelperUser().getMessage(), "\"Login or Password incorrect\"");
+        logger.info("Assert check that message '\"Login or Password incorrect\"' appears");
 
     }
 

@@ -1,0 +1,5 @@
+00:34:57.026 INFO  manager.ApplicationManager - All tests run in Chrome Browser
+00:34:58.307 INFO  manager.ApplicationManager - The link--->https://ilcarro.web.app/search
+00:34:58.336 INFO  tests.TestBase - Name of method--->loginWrongPassword
+00:35:03.402 INFO  tests.TestBase - Test data--->email:lonchik_7_7@walla.co.il , password:Samimi@44 
+00:35:09.383 INFO  tests.TestBase - ======================================================

@@ -35,6 +35,7 @@ public class AddNewCarTests extends TestBase{
                 .build();
         app.getHelperCar().openCarForm();
         app.getHelperCar().fillCarForm(car);
+        app.getHelperCar().getScreen("src/test/screenshots/screen" +i+ ".png");
         app.getHelperCar().attachPhoto("C:\\JavaProjects\\QA_24\\QA_24_IlCarro\\Lamborghini-Revuelto-Featured-Gear.webp");
         app.getHelperCar().submit();
         Assert.assertTrue(app.getHelperCar().getMessage().contains("added successful"));

@@ -1,0 +1,7 @@
+00:12:15.518 INFO  manager.ApplicationManager - All tests run in Chrome Browser
+00:12:17.086 INFO  manager.ApplicationManager - The link--->https://ilcarro.web.app/search
+00:12:17.120 INFO  tests.TestBase - Name of method--->loginPositiveTest
+00:12:22.206 INFO  tests.TestBase - Start test with name 'loginPositiveTest' 
+00:12:22.206 INFO  tests.TestBase - Test data--->email:lonchik_7_7@walla.co.il , password:Samimi@44@ 
+00:12:23.931 INFO  tests.TestBase - Assert check that message 'Logged in success' appears
+00:12:24.063 INFO  tests.TestBase - ======================================================
