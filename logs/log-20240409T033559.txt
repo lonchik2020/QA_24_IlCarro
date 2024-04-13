@@ -1,5 +1,0 @@
-03:36:04.231 INFO  tests.TestBase - Name of method--->loginPositiveTest
-03:36:09.291 INFO  tests.TestBase - Start test with name 'loginPositiveTest' 
-03:36:09.291 INFO  tests.TestBase - Test data--->email:lonchik_7_7@walla.co.il , password:Samimi@44@ 
-03:36:11.113 INFO  tests.TestBase - Assert check that message 'Logged in success' appears
-03:36:11.232 INFO  tests.TestBase - ======================================================

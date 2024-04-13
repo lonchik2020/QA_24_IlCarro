@@ -5,6 +5,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 public class HelperCar extends HelperBase{
     public HelperCar(WebDriver driver) {
         super(driver);
@@ -52,4 +55,69 @@ public class HelperCar extends HelperBase{
     public void attachPhoto(String link) {
         driver.findElement(By.cssSelector("#photos")).sendKeys(link);
     }
+
+    public void searchCurrentMonth(String city, String dateFrom, String dateTo) {
+        typeCity(city);
+        click(By.id("dates"));
+        //"4/25/2024","4/28/2024"
+        String[] from = dateFrom.split("/");///["4"]["25"]["2024"]
+
+        String locatorFrom = "//div[text()=' "+from[1]+" ']";
+
+        String[] to = dateTo.split("/");///["4"]["28"]["2024"]
+
+        click(By.xpath(locatorFrom));
+        click(By.xpath("//div[text()=' "+to[1]+" ']"));
+    }
+
+    private void typeCity(String city) {
+        type(By.id("city"),city);
+        click(By.cssSelector("div.pac-item"));
+    }
+
+    public boolean isListOfCarsAppeared() {
+        return isElementPresent(By.cssSelector("a.car-container"));
+    }
+
+    public void searchCurrentYear(String city, String dateFrom, String dateTo) {
+        typeCity(city);
+        click(By.id("dates"));
+
+        //"4/27/2024", "6/28/2024"
+        LocalDate now = LocalDate.now();
+        System.out.println(now);//2024-04-13 === object, not possible to split
+        int year = now.getYear();
+        int month = now.getMonthValue();
+        int day = now.getDayOfMonth();
+
+        LocalDate from = LocalDate
+                .parse(dateFrom, DateTimeFormatter.ofPattern("M/d/yyyy"));//2024-04-27
+        //to change string to "local date", must explain how to receive this string(the format)
+
+        //LocalDate from1 = LocalDate.parse("2013:23/05", DateTimeFormatter.ofPattern("yyyy:d/MM"));
+
+        System.out.println(from);
+        //System.out.println(from1);
+
+        LocalDate to = LocalDate.parse(dateTo, DateTimeFormatter.ofPattern("M/d/yyyy"));//2024-06-28
+
+        int diffMonth = from.getMonthValue()-month;
+        if (diffMonth>0){
+            clickNextMonthBtn(diffMonth);
+        }
+        click(By.xpath("//div[text()=' "+from.getDayOfMonth()+" ']"));
+        diffMonth = to.getMonthValue() - from.getMonthValue();
+        if (diffMonth>0){
+            clickNextMonthBtn(diffMonth);
+        }
+        click(By.xpath("//div[text()=' "+to.getDayOfMonth()+" ']"));
+    }
+
+    private void clickNextMonthBtn(int diffMonth) {
+        for (int i = 0; i < diffMonth; i++) {
+            click(By.cssSelector("button[aria-label='Next month']"));
+        }
+    }
+
+
 }
