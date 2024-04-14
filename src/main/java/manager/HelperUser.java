@@ -44,10 +44,6 @@ public class HelperUser extends HelperBase {
 
 
 
-    public String getErrorText() {
-        return driver.findElement(By.cssSelector("div.error")).getText();
-    }
-
     //************************REGISTRATION***************************************
 
     public void openRegistrationForm() {

@@ -102,4 +102,8 @@ public class HelperBase {
         }
         element.sendKeys(Keys.DELETE);
     }
+
+    public String getErrorText() {
+        return driver.findElement(By.cssSelector("div.error")).getText();
+    }
 }
