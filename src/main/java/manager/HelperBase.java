@@ -89,6 +89,17 @@ public class HelperBase {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
 
+    public void clearTextBox(By locator){
+        WebElement element = driver.findElement(locator);
+        String os = System.getProperty("os.name");
+        System.out.println(os);
+        if (os.startsWith("Win")){
+            element.sendKeys(Keys.CONTROL, "a");
+        }else {
+            element.sendKeys(Keys.COMMAND, "a");
+        }
+        element.sendKeys(Keys.DELETE);
     }
 }
