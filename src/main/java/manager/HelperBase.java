@@ -93,7 +93,7 @@ public class HelperBase {
 
     public void clearTextBox(By locator){
         WebElement element = driver.findElement(locator);
-        String os = System.getProperty("os.name");
+        String os = System.getProperty("os.name");//to receive from the system the name of operational system
         System.out.println(os);
         if (os.startsWith("Win")){
             element.sendKeys(Keys.CONTROL, "a");

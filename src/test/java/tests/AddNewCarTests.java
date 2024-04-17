@@ -1,5 +1,6 @@
 package tests;
 
+import manager.DataProviderCar;
 import models.Car;
 import models.User;
 import org.testng.Assert;
@@ -43,20 +44,9 @@ public class AddNewCarTests extends TestBase{
                 .getMessage(), car.getManufacture()+ " "+car.getModel()+ " added successful");
     }
 
-    @Test
-    public  void addNewCarSuccess(){
-        int i = (int)(System.currentTimeMillis()/1000)%3600;
-        Car car = Car.builder()
-                .location("Tel Aviv, Israel")
-                .manufacture("Kia")
-                .model("Sportage")
-                .year("2021")
-                .fuel("Petrol")
-                .seats(4)
-                .carClass("C")
-                .carRegNumber("555-444"+ i)
-                .price(50)
-                .build();
+    @Test(dataProvider = "DPFile_addNewCarSuccess", dataProviderClass = DataProviderCar.class)
+    public  void addNewCarSuccess(Car car){
+        logger.info("Tests run with data: -----> " + car.toString());
         app.getHelperCar().openCarForm();
         app.getHelperCar().fillCarForm(car);
         app.getHelperCar().submit();
@@ -64,7 +54,6 @@ public class AddNewCarTests extends TestBase{
         Assert.assertEquals(app.getHelperCar()
                 .getMessage(), car.getManufacture()+ " "+car.getModel()+ " added successful");
     }
-
 
     @AfterMethod
     public void postCondition(){

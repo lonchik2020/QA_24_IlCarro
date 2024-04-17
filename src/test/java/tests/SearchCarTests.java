@@ -9,6 +9,7 @@ public class SearchCarTests extends TestBase{
 
     @BeforeMethod
     public void postCondition(){
+
         app.getHelperCar().navigateToHomePageByLogo();
     }
 

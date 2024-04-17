@@ -143,6 +143,8 @@ public class HelperCar extends HelperBase{
                 .parse(dateTo, DateTimeFormatter.ofPattern("M/d/yyyy"));//2025-02-28
         System.out.println(to);
 
+        //**from
+
         int diffMonth;
         int diffYear = from.getYear()-year;
 
@@ -159,6 +161,8 @@ public class HelperCar extends HelperBase{
 
        String locator = String.format("//div[text()=' %s ']", from.getDayOfMonth());
         click(By.xpath(locator));
+
+        //**to
 
         diffYear = to.getYear()-from.getYear();
         if(diffYear==0){
