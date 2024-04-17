@@ -21,6 +21,7 @@ public class DataProviderCar {
     @DataProvider
     public Iterator<Object[]> DPFile_addNewCarSuccess(){
         List<Object[]> list = new ArrayList<>();
+        int i = (int)(System.currentTimeMillis()/1000)%3600;
         String path = "src/test/resources/car.csv";
         try {
             BufferedReader reader = new BufferedReader(new FileReader(new File(path)));
@@ -35,7 +36,7 @@ public class DataProviderCar {
                         .fuel(splitArray[4])
                         .seats(Integer.parseInt(splitArray[5]))
                         .carClass(splitArray[6])
-                        .carRegNumber(splitArray[7])
+                        .carRegNumber(splitArray[7]+i)
                         .price(Double.parseDouble(splitArray[8]))
                         .build()});
                 line = reader.readLine();
